@@ -1,12 +1,11 @@
 import React from 'react';
 import Navbar from './Component/Navbar'
-import Home_page from './pages/Home_page';
+import MapPage from './pages/MapPage';
 function App() {
   return (
     <div>
       <Navbar />
-      <h1>Welcome to My Site</h1>
-      <Home_page/>
+    <MapPage/>
     </div>
   );
 }
