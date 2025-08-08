@@ -1,15 +1,23 @@
 import React from 'react';
-import Navbar from './Component/Navbar'
+import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react';
+import Navbar from './Component/Navbar';
 import Home_page from './pages/Home_page';
-function App() {
+
+export default function App() {
   return (
-    <div>
-      <Navbar />
-      <h1>Welcome to My Site</h1>
-      <Home_page/>
-    </div>
+    <header>
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
+      <SignedIn>
+      <Navbar/>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Home_page/>}/>
+        </Routes>
+      </Router>
+      </SignedIn>
+    </header>
   );
 }
-
-export default App;
-
