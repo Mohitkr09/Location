@@ -1,22 +1,23 @@
 import React from 'react';
 import { Bell, User } from "lucide-react";
 import logo from '../assets/logo.jpg'; 
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         
-        {/* Logo Section */}
-        <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
-         <img src={logo} className="h-10" alt="Logo" />
-<span className="font-sheppards  text-red-600 text-3xl">find&me</span>
-        </a>
+       
+        <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+          <img src={logo} className="h-10" alt="Logo" />
+          <span className="font-sheppards text-red-600 text-3xl">find&me</span>
+        </Link>
 
-        {/* Right Side (Search, Bell, Avatar) */}
+      
         <div className="flex md:order-2 items-center space-x-4">
           
-          {/* Search Bar */}
+         
           <div className="relative hidden md:block">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <svg className="w-7 h-4 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 20 20">
@@ -31,18 +32,16 @@ const Navbar = () => {
             />
           </div>
 
-          {/* Notification Bell */}
           <div className="relative ml-6">
             <Bell className="w-6 h-6 text-gray-700 dark:text-white" />
             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1.5">3</span>
           </div>
 
-         <div className="w-8 h-8 ml-9 flex items-center justify-center rounded-full border-2 border-gray-300 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
-        <User className="w-5 h-5 text-gray-700  dark:text-white" />
-        </div>
+          <div className="w-8 h-8 ml-9 flex items-center justify-center rounded-full border-2 border-gray-300 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
+            <User className="w-5 h-5 text-gray-700 dark:text-white" />
+          </div>
         </div>
 
-        {/* Mobile Menu Toggle Button */}
         <button
           data-collapse-toggle="navbar-search"
           type="button"
@@ -56,9 +55,7 @@ const Navbar = () => {
           </svg>
         </button>
 
-        {/* Mobile Menu */}
         <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
-          {/* Search for mobile */}
           <div className="relative mt-3 md:hidden">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,16 +70,43 @@ const Navbar = () => {
             />
           </div>
 
-          {/* Navigation Links */}
           <ul className="flex flex-col p-4 mt-4 font-medium gap-9 border border-gray-100 rounded-lg bg-gray-50 md:p-0 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
-              <a href="#" className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500">Home</a>
+              <NavLink 
+                to="/" 
+                className={({ isActive }) => 
+                  `block py-2 px-3 rounded md:p-0 ${isActive 
+                    ? 'text-white bg-blue-700 md:bg-transparent md:text-blue-700 dark:text-white md:dark:text-blue-500' 
+                    : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500'}`
+                }
+                end
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500">About</a>
+              <NavLink 
+                to="/order" 
+                className={({ isActive }) => 
+                  `block py-2 px-3 rounded md:p-0 ${isActive 
+                    ? 'text-white bg-blue-700 md:bg-transparent md:text-blue-700 dark:text-white md:dark:text-blue-500' 
+                    : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500'}`
+                }
+              >
+                Order
+              </NavLink>
             </li>
             <li>
-              <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500">Services</a>
+              <NavLink 
+                to="/mostorder" 
+                className={({ isActive }) => 
+                  `block py-2 px-3 rounded md:p-0 ${isActive 
+                    ? 'text-white bg-blue-700 md:bg-transparent md:text-blue-700 dark:text-white md:dark:text-blue-500' 
+                    : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500'}`
+                }
+              >
+                MostOrder
+              </NavLink>
             </li>
           </ul>
         </div>
