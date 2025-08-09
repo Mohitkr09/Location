@@ -1,13 +1,22 @@
 import React from 'react';
-import Navbar from './Component/Navbar'
-import Home_page from './pages/Home_page';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import OrderPage from './pages/OrderPage';
+import MostOrderPage from './pages/MostOrderPage';
+import HomePage from './HomePage';
+
 function App() {
   return (
-    <div>
-      <Navbar />
-      <h1>Welcome to My Site</h1>
-      <Home_page/>
-    </div>
+    <Router>
+      
+          <Routes>
+          
+         <Route path="/" element={<HomePage />} />
+          <Route path="/order" element={<OrderPage />} />
+          <Route path="/mostorder" element={<MostOrderPage />} />
+          
+        </Routes>
+      
+    </Router>
   );
 }
 
